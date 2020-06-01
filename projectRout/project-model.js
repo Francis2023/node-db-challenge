@@ -10,14 +10,21 @@ module.exports = {
 
 function findProjects () {
     return db('projects')
+      .select("*")
+      .from("projects");
+      
 };
 
 function findResources () {
     return db('projects')
+      .select("*")
+      .from("resources")
 };
 
 function findTasks(){
-
+   return db('task')
+     .join('projects')
+     .select("task","project_Name","project_description")
 }
 
 function findById(id) {
