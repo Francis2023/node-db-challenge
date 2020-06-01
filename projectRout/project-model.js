@@ -9,32 +9,32 @@ module.exports = {
 };
 
 function findProjects () {
-    return db('projects')
+    return db("projects")
       .select("*")
       .from("projects");
       
 };
 
 function findResources () {
-    return db('projects')
+    return db("projects")
       .select("*")
       .from("resources")
 };
 
 function findTasks(){
-   return db('task')
-     .join('projects')
+   return db("task")
+     .join("projects")
      .select("task","project_Name","project_description")
 }
 
 function findById(id) {
-    return db('item')
+    return db("item")
       .where({ id })
       .first();
 }
 
 function add(item) {
-    return db('item')
+    return db("item")
       .insert(item)
       .then(id => {
           return findById(id[0]);

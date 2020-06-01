@@ -20,7 +20,7 @@
   "homepage": "https://github.com/Francis2023/node-db-challenge#readme",
   "devDependencies": {
     "nodemon": "^2.0.4"
-},
+  },
   "dependencies": {
     "esm": "^3.2.25",
     "express": "^4.17.1",

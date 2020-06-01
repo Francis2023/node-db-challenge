@@ -18,7 +18,6 @@ exports.up = function(knex) {
             .defaultTo('false')
             .notNullable();
           tbl.integer('project_id')
-            .foreign()
             .references('id')
             .inTable('projects')
             .notNullable()
@@ -31,7 +30,6 @@ exports.up = function(knex) {
             .unique();
           tbl.text('resource_description');
           tbl.integer('project_id')
-            .foreign()
             .references('id')
             .inTable('projects')
       })
