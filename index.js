@@ -1,7 +1,7 @@
-const server = require('./api/server');
+const server = require('./api/server.js');
 
-const port = procees.env.PORT || 6999;
+const PORT = procees.env.PORT || 6999;
 
-server.listen(port, () => {
-    console.log(`running on port ${port}`);
+server.listen(PORT, () => {
+    console.log(`running on port ${PORT}`);
 });
