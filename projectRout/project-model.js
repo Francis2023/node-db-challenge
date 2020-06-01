@@ -25,6 +25,7 @@ function findTasks(){
    return db("task")
      .join("projects")
      .select("task","project_Name","project_description")
+     .from("tasks")
 }
 
 function findById(id) {
