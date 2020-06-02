@@ -3,9 +3,11 @@ const db = require('../data/dbConfig.js');
 module.exports = {
   findProjects,
   findResources,
-  add,
+  addProject,
   findById,
-  findTasks
+  findTasks,
+  addTask,
+  addResource
 };
 
 function findProjects () {
@@ -16,28 +18,36 @@ function findProjects () {
 };
 
 function findResources () {
-    return db("projects")
+    return db("resources")
       .select("*")
       .from("resources")
 };
 
 function findTasks(){
-   return db("task")
-     .join("projects")
-     .select("task","project_Name","project_description")
-     .from("tasks")
+   return db("tasks")
+     .select("task","project_Name","project_description","project_id")
+     .join("projects", 'projects.id', 'tasks.project_id')
+    
 }
 
 function findById(id) {
-    return db("item")
+    return db("projects")
       .where({ id })
       .first();
 }
 
-function add(item) {
-    return db("item")
-      .insert(item)
-      .then(id => {
-          return findById(id[0]);
-      })
+function addProject(project) {
+    return db("projects")
+      .insert(project)
+
+}
+function addTask(task) {
+  return db("tasks")
+    .insert(task)
+
+}
+function addResource(resource) {
+  return db("resources")
+    .insert(resource)
+
 }

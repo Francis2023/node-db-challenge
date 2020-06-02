@@ -17,11 +17,12 @@ router.get('/', (req, res) => {
 router.post('/', (req, res) => {
    const projectData = req.body;
 
-   projects.add(projectData)
+   projects.addProject(projectData)
    .then(project => {
       res.status(201).json(project);
     })
     .catch (err => {
+       console.log(err)
       res.status(500).json({ message: 'Failed to create new project' });
     });
 })
@@ -39,7 +40,7 @@ router.get('/resources', (req,res) => {
 router.post('/resources', (req, res) => {
    const resourceData = req.body;
 
-   projects.add(resourceData)
+   projects.addResource(resourceData)
    .then(resource => {
       res.status(201).json(resource);
     })
@@ -54,14 +55,14 @@ router.get('/tasks', (req,res) => {
       res.json(tasks)
    })
    .catch(err => {
-      res.status(500).json({ message: 'Failed to get resources'})
+      res.status(500).json({ message: 'Failed to get tasks'})
    })
 })
 
 router.post('/tasks', (req, res) => {
    const taskData = req.body;
 
-   projects.add(taskData)
+   projects.addTask(taskData)
    .then(task => {
       res.status(201).json(task);
     })

@@ -21,17 +21,28 @@ exports.up = function(knex) {
             .references('id')
             .inTable('projects')
             .notNullable()
-            .unique();
+            
+            
       })
       .createTable('resources', tbl => {
           tbl.increments();
           tbl.text('resource')
             .notNullable()
-            .unique();
+            
           tbl.text('resource_description');
           tbl.integer('project_id')
             .references('id')
             .inTable('projects')
+      })
+      .createTable('resourceProject', tbl => {
+          tbl.increments();
+          tbl.integer('project_id')
+             .references('id')
+             .inTable('project');
+          tbl.integer('resource_id')
+            .references('id')
+            .inTable('resources');
+          
       })
 
 
